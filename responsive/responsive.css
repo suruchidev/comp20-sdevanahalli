@@ -1,1 +1,38 @@
 
+.homer {
+		
+	background-image: url("homer.jpg");
+    width:312.5px;
+	height:312.5px;
+
+}
+
+@media screen and (min-width: 1200px){
+	.homer {
+      background-position: 0% 0%;
+	}
+
+}
+
+@media screen and (min-width: 800px) and (max-width: 1200px){
+
+	.homer {
+		background-position:  100% 0%;
+	}
+}
+
+
+@media screen and (min-width:400px) and (max-width: 800px){
+	.homer {
+		
+      background-position:  0% 100%;
+	}
+}
+
+@media screen and (max-width: 400px) {
+
+	.homer {
+		background-position:  100% 100%;
+		
+	}
+}
