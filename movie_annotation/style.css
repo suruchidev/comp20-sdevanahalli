@@ -1,0 +1,19 @@
+
+body {
+	text-align: center;
+	font-family: "Palatino Linotype", "Book Antiqua", Palatino;
+}
+#movie_quotes {
+	font-family: "Palatino Linotype", "Book Antiqua", Palatino;
+	font-size: 20px;
+	height:50px;
+	width:45%;
+	margin-left: 345px;
+	text-align: left;
+
+}
+
+video {
+	height:30%;
+	width:45%;
+}

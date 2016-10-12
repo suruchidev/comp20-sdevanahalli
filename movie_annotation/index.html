@@ -1,1 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Classic Movie</title>
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
 
+<body onload="subtitles()">
+
+<h1 id="title">Classic Movie</h1>
+
+<video src="https://www.cs.tufts.edu/comp/20/classic.mp4" id="classic_video" controls></video>
+
+<div id="movie_quotes" ></div>
+
+<script  type="text/javascript">
+	function subtitles(){
+		var video = document.getElementsByTagName("video")[0];
+        video.addEventListener("timeupdate", function(){
+    	
+    	if (video.currentTime <24){
+			document.getElementById("movie_quotes").innerHTML = "";
+	    }
+    	if (video.currentTime >= 24){
+			document.getElementById("movie_quotes").innerHTML = "Igor: DR. FRANKENSTEIN?!?!?";
+	    }
+
+	    if (video.currentTime >= 31){
+			document.getElementById("movie_quotes").innerHTML = "Dr. Frederick Frankenstein: Frokensteen.";
+	    }
+
+	    if (video.currentTime >= 34){
+			document.getElementById("movie_quotes").innerHTML = "Igor: You're putting me on.";
+	    }
+
+	    if (video.currentTime >= 36){
+			document.getElementById("movie_quotes").innerHTML = "Dr. Frederick Frankenstein: No, it pronounced, &quot;Frokensteen&quot; .";
+	    }
+
+	    if (video.currentTime >= 39.5){
+			document.getElementById("movie_quotes").innerHTML = "Igor: Do you also say Froaderick?";
+	    }
+
+	    if (video.currentTime >= 42){
+			document.getElementById("movie_quotes").innerHTML = "Dr. Frederick Frankenstein: No . . . &quot;Frederick.&quot; ";
+	    }
+
+	    if (video.currentTime >= 44){
+			document.getElementById("movie_quotes").innerHTML = "Igor: Well, why isn't it 'Froaderick Frokensteen'? ";
+	    }
+
+	    if (video.currentTime >= 47){
+			document.getElementById("movie_quotes").innerHTML = " Dr. Frederick Frankenstein: It isn't, it's &quot;Frederick Frokensteen&quot" ;
+	    }
+	     if (video.currentTime >= 50){
+			document.getElementById("movie_quotes").innerHTML = "Igor: I see." ;
+	    }
+
+	    if (video.currentTime >= 52){
+			document.getElementById("movie_quotes").innerHTML = "Dr. Frederick Frankenstein: You must be Igor. [He pronounces it ee-gor.]";
+	    }
+	    if (video.currentTime >= 53){
+			document.getElementById("movie_quotes").innerHTML = "Igor: No, it's pronounced &quot;eye-gor.&quot;";
+	    }
+		 if (video.currentTime >= 57){
+			document.getElementById("movie_quotes").innerHTML = "Dr. Frederick Frankenstein: But they told me it was &quot;ee-gor &quot;...";
+	    }
+
+	     if (video.currentTime >= 58){
+			document.getElementById("movie_quotes").innerHTML = "Igor: Well, they were wrong then, weren't they?";
+	    }
+	    if (video.currentTime >= 61){
+			document.getElementById("movie_quotes").innerHTML = "Dr. Frederick Frankenstein: Uh, you were sent here by Herr Falkstein, weren't you?";
+	    }
+
+	     if (video.currentTime >= 64){
+			document.getElementById("movie_quotes").innerHTML = "Igor: Yes. My grandfather used to work for your grandfather.";
+	    }
+	    if (video.currentTime >= 71){
+			document.getElementById("movie_quotes").innerHTML = "Dr. Frederick Frankenstein: How nice.";
+	    }
+	    if (video.currentTime >= 72){
+			document.getElementById("movie_quotes").innerHTML = "Igor: Of course the rates have gone up.";
+	    }
+	    if (video.currentTime >= 74){
+			document.getElementById("movie_quotes").innerHTML = "Dr. Frederick Frankenstein: Of course, of course, I'm sure we'll get along splendidly. Oh, I uh, you know I don't mean to embarrass you, but I'm rather a brilliant surgeon. Perhaps I can help you with that hump.";
+	    }
+	    if (video.currentTime >= 89){
+			document.getElementById("movie_quotes").innerHTML = "Igor: What hump?";
+	    }
+
+    });
+}
+
+</script>
+</body>
+</html>	
