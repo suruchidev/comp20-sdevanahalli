@@ -1,0 +1,132 @@
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Captain's Log</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+          var temp = localStorage.getItem('logs');
+          if (temp !== null){
+          $('#log').prepend(temp);
+      }
+        $('#msg').keypress(function(e){
+            if(e.keyCode == 13)
+                {
+
+                    if($('#msg').val() !== '') {
+                    var message = $('#msg').val();
+                    var stored_message = localStorage.setItem('mesg',message);
+                    var mesg2 = localStorage.getItem('mesg');
+                    var date = new Date();
+                    var day_of_week = date_specs(date);
+                    var month_now = month_specs(date);
+            
+                    $('#log').prepend('<div>' + day_of_week + " " + month_now + " " +
+                                    date.getDate() + " " + date.getHours()+ ":"+ date.getMinutes()+ ":" + date.getSeconds() + " " + date.getFullYear() + " - "+mesg2+'</div>');
+                    var logs = $('#log').html();
+                    localStorage.setItem('logs', logs);
+                    
+                   
+
+            }
+
+        }
+    });
+
+        function date_specs(date){
+            var day;
+            
+           if (date.getDay() == 0){
+            day = "Sun";
+           }
+            if (date.getDay() == 1){
+            day = "Mon";
+           }
+            if (date.getDay() == 2){
+            day = "Tue";
+           }
+            if (date.getDay() == 3){
+            day = "Wed";
+           }
+            if (date.getDay() == 4){
+            day = "Thurs";
+           }
+            if (date.getDay() == 5){
+            day = "Fri";
+           }
+           if (date.getDay() == 6){
+            day = "Sat";
+           }
+
+          
+
+        return day;
+    }
+
+    function month_specs(date){
+
+        var month;
+         if (date.getMonth() == 0){
+            month = "Jan";
+           }
+
+           if (date.getMonth() == 1){
+            month = "Feb";
+           }
+
+           if (date.getMonth() == 2){
+            month = "Mar";
+           }
+
+           if (date.getMonth() == 3){
+            month = "Apr";
+           }
+
+           if (date.getMonth() == 4 ){
+            month = "May";
+           }
+
+           if (date.getMonth() == 5){
+            month = "Jun";
+           }
+
+           if (date.getMonth() == 6 ){
+            month = "Jul";
+           }
+
+           if (date.getMonth() == 7 ){
+            month = "Aug";
+           }
+
+           if (date.getMonth() == 8 ){
+            month = "Sept";
+           }
+
+           if (date.getMonth() == 9 ){
+            month = "Oct";
+           }
+           if (date.getMonth() == 10 ){
+            month = "Nov";
+           }
+
+            if (date.getMonth() == 11 ){
+            month = "Dec";
+           }
+         return month;
+    }
+
+    });
+    </script>
+</head>
+
+<body>
+    <h1>Captain's Log</h1>
+    <h3>New entry: <input type="text" id="msg" name="msg" size="30" /></h3>
+    <div id="log"></div>
+</body>
+</html>
