@@ -80,14 +80,14 @@ if (request.readyState == 4 && request.status == 200) {
         
       }
 else if(request.status == 404){
-   alert("Loading.....Please click MBTA station again")
+   alert("Loading.....Please click MBTA station again");
 }
 }
 
 function get_stop_info(){
 
   request = new XMLHttpRequest();
-  request.open("get", "https://rocky-taiga-26352.herokuapp.com/redline.json", true);
+  request.open("get", "https://damp-escarpment-29878.herokuapp.com/redline.json", true);
   request.onreadystatechange = funex;
   request.send();
 }
@@ -96,7 +96,7 @@ function click_markers( i, station){
   
    google.maps.event.addListener(station, 'click', function() {
             
-           //if (infowindow.getMap() != null){
+         
             get_stop_info();
   
 
@@ -104,10 +104,7 @@ function click_markers( i, station){
              station.content="";
              for(x = 0; x < stop_info["TripList"]["Trips"].length; x++){
               for (y =0; y < stop_info["TripList"]["Trips"][x]["Predictions"].length; y++){
-                
-                //console.log("outside if!");
-                 //console.log(stop_info["TripList"]["Trips"][x]["Destination"])
-                 //console.log(stop_info["TripList"]["Trips"][x]["Predictions"][y]["Stop"]);
+               
                 
                 if (stop_info["TripList"]["Trips"][x]["Predictions"][y]["Stop"] == stopNames[i]){
                   
@@ -118,7 +115,7 @@ function click_markers( i, station){
                  
                  station.content = station.content + '<div> To:' + stop_info["TripList"]["Trips"][x]["Destination"] + ' '
                                    + whole_num + ":" + remainder + ' mins </div>';
-                console.log(station.content);
+                
                                    
                   
                   }
