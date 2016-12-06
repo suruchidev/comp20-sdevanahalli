@@ -1,0 +1,71 @@
+
+<!DOCTYPE html>
+
+<html>
+<head>
+ 	<meta charset="utf-8" />
+ 	<title>Assignment 4</title>
+ 	 <link rel="stylesheet" href="index.css" />
+ </head>
+
+<body>
+<h2> 1. Introduction </h2>
+<div class="div-style">Description of Product: A web application that maintains final scores and grids of players of the 2048 game. Contains a game center that displays highscores of players.</div>
+
+<div>I was hired to find potential vulnerabilities in the security and privacy of the product.</div>
+
+<h2>2. Methodology of testing </h2>
+
+<h2> 3. Abstract of Findings </h2>
+<div class="div-style">Vulnerabilities:</div>
+<ul>
+<li>Cross site scripting: when data is taken from users and dynamically incorporated into webpages without validating data. Allows an attacker to make commands and display unwanted data on the webpage.</li>
+
+<li class="div-style">Mongodb injection: could lead to unwanted queries from the database leading to leaks in information to unauthorized users.</li>
+
+<li class="div-style">Cross origin resource sharing: any program can post (HTML request) to the web app because cross origin resource sharing has been enabled to everyone.</li>
+</ul>
+<!-- 
+$.post("http://damp-escarpment-29878.herokuapp.com/submit.json", dataobj, function(){}); -->
+
+<h2> 4. Issues found </h2>
+
+<ul>
+<li> Issue: Cross Site Scripting
+	 <ul>
+	 	<li class="li-style">Location: When user is prompted to enter a username, the server side route /submit.json does not check to make sure that the input is sanatized and does not resemble html code (Heroku repository- index.js)</li>
+	 	<li class="li-style">Severity: High - an attacker could effect the main purpose of this web app which is to show the scores of users. If scores are displayed with malicious content interwoven through the web page, the application fails to do its inherent task. </li>
+	 	<li class="li-style">Description of Issue: No checks are done to make sure user input of username is sanatized. This means that html code can be entered in the username field and this is then stored in the database in the username field. When the game center page is rendered with usernames and scores, this html code is also rendered. </li>
+	 	<li class="li-style">Proof of Vulnerability: The image below shows that an image tag can be inserted into the data base in the username field and the game center will then display that image as the username. </li>
+	 	<img src="xss.png" height="500" width="1000">
+	 	<li class="li-style">Resolution: make sure that the username being input by the user does not contain html characters and tags.</li>
+	 </ul>
+
+</li>	
+
+<li> Issue: Mongodb Injection
+	 <ul>
+	 	<li class="li-style">Location: When a get request is made using the /scores.json path in the server side. (Heroku repository- index.js)</li>
+	 	<li class="li-style">Severity: High - Attackers have access to the full database of scores, usernames, grids and timestamps. In this example, an injection was done to retrieve all data in database. This is incredibly harmful and would make all information in database incredibly insecure.</li>
+	 	<li class="li-style">Description of Issue: When a username is recieved through request.body, special characters are not removed from request.body.username. This means that the database (Mongodb) is vulnerable to attacks because unauthorized queries can be made to the database by adding special characters in the username field. </li>
+	 	<li class="li-style">Proof of Vulnerability: As shown in the image below, the addition of characters [$ne] tells the database to print all data without a username equal to j. Since j is not a username in the database, every entry was returned. </li>
+	 	<img src="mongodb.png" height="400" width="1100">
+	 	<li class="li-style">Resolution: Remove special characters that could be used to make database queries from request.body.username using the inbuilt function - replace(/[^\w\s]/gi, ''); </li>
+	 </ul>
+
+</li>	
+
+<li> Issue: Cross Origin Resource Sharing
+	 <ul>
+	 	<li>Location</li>
+	 	<li>Severity</li>
+	 	<li>Description of Issue</li>
+	 	<li>Proof of Vulnerability</li>
+	 	<li>Resolution</li>
+	 </ul>
+
+</li>	 
+</ul>
+
+</body>
+</html>
